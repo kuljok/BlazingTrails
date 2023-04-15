@@ -17,7 +17,9 @@
 
     protected override async Task OnInitializedAsync()
     {
-        Console.WriteLine($"OnInitializedAsync ({DateTime.Now:hh:mm:ss.fff})");
+        Console.WriteLine($"OnInitializedAsync - Begin ({DateTime.Now:hh:mm:ss.fff})");
+        await Task.Delay(300);
+        Console.WriteLine($"OnInitializedAsync - End ({DateTime.Now:hh:mm:ss.fff})");
     }
 
     protected override void OnParametersSet() => Console.WriteLine($"OnParametersSet ({DateTime.Now:hh:mm:ss.fff})");
