@@ -1,0 +1,30 @@
+﻿<h1>Component Lifecycle</h1>
+<p>Check the console for details...</p>
+
+@code {
+
+    public override async Task SetParametersAsync(ParameterView parameters)
+    {
+        Console.WriteLine($"SetParametersAsync - Begin ({DateTime.Now:hh:mm:ss.fff})");
+        await base.SetParametersAsync(parameters);
+        Console.WriteLine($"SetParametersAsync - End ({DateTime.Now:hh:mm:ss.fff})");
+    }
+
+    protected override void OnInitialized()
+    {
+        Console.WriteLine($"OnInitialized ({DateTime.Now:hh:mm:ss.fff})");
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Console.WriteLine($"OnInitializedAsync ({DateTime.Now:hh:mm:ss.fff})");
+    }
+
+    protected override void OnParametersSet() => Console.WriteLine($"OnParametersSet ({DateTime.Now:hh:mm:ss.fff})");
+
+    protected override async Task OnParametersSetAsync() => Console.WriteLine($"OnParametersSetAsync ({DateTime.Now:hh:mm:ss.fff})");
+
+    protected override void OnAfterRender(bool firstRender) => Console.WriteLine($"OnAfterRender (First render: {firstRender} ({DateTime.Now:hh:mm:ss.fff})");
+
+    protected override async Task OnAfterRenderAsync(bool firstRender) => Console.WriteLine($"OnAfterRenderAsync (First render: {firstRender} ({DateTime.Now:hh:mm:ss.fff})");
+}
