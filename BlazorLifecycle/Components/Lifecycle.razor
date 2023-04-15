@@ -1,4 +1,7 @@
-﻿<h1>Component Lifecycle</h1>
+﻿@implements IDisposable
+@implements IAsyncDisposable
+
+<h1>Component Lifecycle</h1>
 <p>Check the console for details...</p>
 
 @code {
@@ -29,4 +32,8 @@
     protected override void OnAfterRender(bool firstRender) => Console.WriteLine($"OnAfterRender (First render: {firstRender} ({DateTime.Now:hh:mm:ss.fff})");
 
     protected override async Task OnAfterRenderAsync(bool firstRender) => Console.WriteLine($"OnAfterRenderAsync (First render: {firstRender} ({DateTime.Now:hh:mm:ss.fff})");
+
+    public void Dispose() => Console.WriteLine($"Dispose");
+
+    public async ValueTask DisposeAsync() => Console.WriteLine("DisposeAsync");
 }
