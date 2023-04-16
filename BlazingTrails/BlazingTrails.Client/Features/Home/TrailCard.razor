@@ -15,7 +15,7 @@
                 <span class="oi oi-infinity mr-2"></span>
                 @Trail.Length km
             </span>
-            <button class="btn btn-primary" title="View" @onclick="@(() => OnSelected?.Invoke(Trail))">
+            <button class="btn btn-primary" title="View" @onclick="@(async () => await OnSelected.InvokeAsync(Trail))">
                 <i class="bi bi-binoculars"></i>
             </button>
         </div>
@@ -27,6 +27,6 @@
     [Parameter, EditorRequired]
     public Trail Trail { get; set; } = default!;
 
-    [Parameter, EditorRequired]
-    public Action<Trail> OnSelected { get; set; }
+    [Parameter]
+    public EventCallback<Trail> OnSelected { get; set; }
 }
