@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazingTrails.Client", "Bla
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorLifecycle", "BlazorLifecycle\BlazorLifecycle.csproj", "{F0F1E919-E400-49A1-8536-39ABFD181DFA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazingTrails.Api", "BlazingTrails.Api\BlazingTrails.Api.csproj", "{B411ED92-E189-47E9-A6AD-2E23D2A008DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazingTrails.Shared", "BlazingTrails.Shared\BlazingTrails.Shared.csproj", "{F7D102B6-77A4-4D6A-8FC6-B1490770EE72}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +30,14 @@ Global
 		{F0F1E919-E400-49A1-8536-39ABFD181DFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F0F1E919-E400-49A1-8536-39ABFD181DFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F0F1E919-E400-49A1-8536-39ABFD181DFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B411ED92-E189-47E9-A6AD-2E23D2A008DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B411ED92-E189-47E9-A6AD-2E23D2A008DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B411ED92-E189-47E9-A6AD-2E23D2A008DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B411ED92-E189-47E9-A6AD-2E23D2A008DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7D102B6-77A4-4D6A-8FC6-B1490770EE72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7D102B6-77A4-4D6A-8FC6-B1490770EE72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7D102B6-77A4-4D6A-8FC6-B1490770EE72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7D102B6-77A4-4D6A-8FC6-B1490770EE72}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9251447E-3AF6-4BC1-B48A-EABB5758ADFD} = {47988F51-F81B-43AA-A4C4-A659D1B5818D}
