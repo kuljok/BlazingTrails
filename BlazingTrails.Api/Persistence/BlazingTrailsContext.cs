@@ -1,6 +1,5 @@
 using BlazingTrails.Api.Persistence.Entities;
 using Microsoft.EntityFrameworkCore;
-using RouteInstruction = BlazingTrails.Client.Features.Home.RouteInstruction;
 
 namespace BlazingTrails.Api.Persistence;
 
