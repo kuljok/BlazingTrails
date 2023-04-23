@@ -51,4 +51,8 @@
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\BlazingTrails.Shared\BlazingTrails.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
