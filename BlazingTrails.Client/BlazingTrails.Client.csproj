@@ -1,11 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.BlazorWebAssembly">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <NpmLastInstall>node_modules/.last-install</NpmLastInstall>
-    <UseBlazorWebAssembly>true</UseBlazorWebAssembly>
   </PropertyGroup>
   
   <ItemGroup>
