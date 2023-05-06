@@ -1,0 +1,3 @@
+**/Features/**/*.razor.css
+**/Features/**/*.razor.css.map
+node_modules/

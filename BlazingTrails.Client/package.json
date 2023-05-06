@@ -1,0 +1,12 @@
+{
+  "name": "BlazingTrails.Client",
+  "version": "1.0.0",
+  "dependencies": {
+  },
+  "scripts": {
+    "sass": "sass"
+  },
+  "devDependencies": {
+    "sass": "1.62.0"
+  }
+}
