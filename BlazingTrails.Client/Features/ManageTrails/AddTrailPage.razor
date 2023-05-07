@@ -1,3 +1,5 @@
+@inject IMediator Mediator
+
 @page "/add-trail"
 
 <PageTitle>Add Trail - Blazing Trails</PageTitle>
@@ -98,10 +100,22 @@
 
 @code {
     private TrailDto _trail = new TrailDto();
+    private bool _submitSuccessful;
+    private string? _errorMessage;
 
-    private Task SubmitForm()
+    private async Task SubmitForm()
     {
-        // TODO: Submit data to API
-        return Task.CompletedTask;
+        var response = await Mediator.Send(
+            new AddTrailRequest(_trail));
+        if (response.TrailId == -1)
+        {
+            _errorMessage = "There was a problem saving your trail.";
+            _submitSuccessful = false;
+            return;
+        }
+
+        _trail = new TrailDto();
+        _errorMessage = null;
+        _submitSuccessful = true;
     }
 }
