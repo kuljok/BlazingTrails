@@ -1,5 +1,6 @@
 using BlazingTrails.Shared.Features.ManageTrails;
 using MediatR;
+using System.Net.Http.Json;
 
 namespace BlazingTrails.Client.Features.ManageTrails;
 
