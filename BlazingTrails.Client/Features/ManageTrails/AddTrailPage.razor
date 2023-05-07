@@ -1,6 +1,7 @@
 @inject IMediator Mediator
 
 @page "/add-trail"
+@using BlazingTrails.Client.Validation
 
 <PageTitle>Add Trail - Blazing Trails</PageTitle>
 
@@ -32,7 +33,7 @@ else if (_errorMessage is not null)
     </div>
 }
 
-<EditForm Model="_trail" OnValidSubmit="SubmitForm">
+<EditForm EditContext="_editContext" OnValidSubmit="SubmitForm">
     <FluentValidationValidator />
 
     <FormSection Title="Basic Details"
@@ -118,6 +119,15 @@ else if (_errorMessage is not null)
 </EditForm>
 
 @code {
+
+    private EditContext _editContext = default!;
+
+    protected override void OnInitialized()
+    {
+        _editContext = new EditContext(_trail);
+        _editContext.SetFieldCssClassProvider(new BootstrapCssClassProvider());
+    }
+
     private TrailDto _trail = new TrailDto();
     private bool _submitSuccessful;
     private string? _errorMessage;
