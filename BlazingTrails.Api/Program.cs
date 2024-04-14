@@ -31,22 +31,14 @@ app.UseHttpsRedirection();
 // enables the API to serve the Blazor application
 app.UseBlazorFrameworkFiles();
 // enables static files to be served by the API
+
+app.UseStaticFiles();
+
 app.UseStaticFiles(new StaticFileOptions()
 {
     FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Images")),
     RequestPath = new PathString("/Images")
 });
-
-if (app.Environment.IsDevelopment())
-{
-    app.UseStaticFiles(new StaticFileOptions
-    {
-        FileProvider = new PhysicalFileProvider(Path.Combine(app.Environment.ContentRootPath + "../BlazingTrails.Client/", "wwwroot")),
-        RequestPath = new PathString("")
-    });   
-}
-
-
 
 app.UseRouting();
 

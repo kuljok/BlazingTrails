@@ -17,7 +17,7 @@ public class GetTrailsEndpoint: EndpointBaseAsync.WithRequest<int>
         _context = context;
     }
 
-    [HttpGet(GetTrailRequest.RouteTemplate)]
+    [HttpGet(GetTrailsRequest.RouteTemplate)]
     public override async Task<ActionResult<GetTrailsRequest.Response>> HandleAsync(int request, 
         CancellationToken cancellationToken = default)
     {
