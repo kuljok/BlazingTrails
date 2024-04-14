@@ -37,6 +37,17 @@ app.UseStaticFiles(new StaticFileOptions()
     RequestPath = new PathString("/Images")
 });
 
+if (app.Environment.IsDevelopment())
+{
+    app.UseStaticFiles(new StaticFileOptions
+    {
+        FileProvider = new PhysicalFileProvider(Path.Combine(app.Environment.ContentRootPath + "../BlazingTrails.Client/", "wwwroot")),
+        RequestPath = new PathString("")
+    });   
+}
+
+
+
 app.UseRouting();
 
 app.MapControllers();

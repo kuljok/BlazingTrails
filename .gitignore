@@ -3,3 +3,4 @@
 **/obj/
 
 /BlazingTrails.Api/Images/
+/BlazingTrails.Api/Persistence/Data/*.db*
