@@ -106,6 +106,35 @@
     
     [Parameter]
     public Func<TrailDto, IBrowserFile?, Task> OnSubmit { get; set; }
+    
+    [Parameter]
+    public TrailDto? Trail { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        _editContext = new EditContext(_trail);
+        _editContext.SetFieldCssClassProvider(new BootstrapCssClassProvider());
+
+        if (Trail != null)
+        {
+            _trail.Id = Trail.Id;
+            _trail.Name = Trail.Name;
+            _trail.Description = Trail.Description;
+            _trail.Location = Trail.Location;
+            _trail.Image = Trail.Image;
+            _trail.ImageAction = ImageAction.None;
+            _trail.Length = Trail.Length;
+            _trail.TimeInMinutes = Trail.TimeInMinutes;
+            
+            _trail.Route.Clear();
+            _trail.Route.AddRange(Trail.Route.Select(ri => 
+                new TrailDto.RouteInstruction
+                {
+                    Stage = ri.Stage,
+                    Description = ri.Description
+                }));
+        }
+    }
 
     public void ResetForm()
     {
@@ -113,12 +142,6 @@
         _editContext = new EditContext(_trail);
         _editContext.SetFieldCssClassProvider(new BootstrapCssClassProvider());
         _trailImage = null;
-    }
-
-    protected override void OnInitialized()
-    {
-        _editContext = new EditContext(_trail);
-        _editContext.SetFieldCssClassProvider(new BootstrapCssClassProvider());
     }
 
     private void LoadTrailImage(InputFileChangeEventArgs e) => _trailImage = e.File;
