@@ -8,7 +8,7 @@ public class EditTrailHandler: IRequestHandler<EditTrailRequest, EditTrailReques
 {
     private readonly HttpClient _httpClient;
 
-    private EditTrailHandler(HttpClient httpClient)
+    public EditTrailHandler(HttpClient httpClient)
     {
         _httpClient = httpClient;
     }

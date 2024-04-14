@@ -4,7 +4,7 @@ using BlazingTrails.Shared.Features.ManageTrails.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace BlazingTrails.Api.Features.ManageTrails;
+namespace BlazingTrails.Api.Features.ManageTrails.Shared;
 
 public class UploadTrailImageEndpoint: EndpointBaseAsync.WithRequest<int>.WithActionResult<string>
 {
@@ -42,6 +42,11 @@ public class UploadTrailImageEndpoint: EndpointBaseAsync.WithRequest<int>.WithAc
         using var image = Image.Load(file.OpenReadStream());
         image.Mutate(x => x.Resize(resizeOptions));
         await image.SaveAsJpegAsync(saveLocation, cancellationToken);
+
+        if (!string.IsNullOrWhiteSpace(trail.Image))
+        {
+            System.IO.File.Delete(Path.Combine(Directory.GetCurrentDirectory(), "Images", trail.Image));
+        }
 
         trail.Image = fileName;
         await _database.SaveChangesAsync(cancellationToken);
