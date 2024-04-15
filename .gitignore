@@ -1,6 +1,8 @@
 **/.idea/
 **/bin/
 **/obj/
+**/node_modules/
+**/*.razor.css*
 
 /BlazingTrails.Api/Images/
 /BlazingTrails.Api/Persistence/Data/*.db*
