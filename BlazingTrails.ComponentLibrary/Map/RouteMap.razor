@@ -14,6 +14,7 @@
 </div>
 
 @code {
+    private DotNetObjectReference<RouteMap> _routeMapReference;
     private ElementReference _map;
     private IJSObjectReference? _routeMapModule;
 
@@ -28,9 +29,14 @@
         {
             _routeMapModule = await JSRuntime.InvokeAsync<IJSObjectReference>("import",
                 "./_content/BlazingTrails.ComponentLibrary/Map/RouteMap.razor.js");
-            await _routeMapModule.InvokeVoidAsync("initialize", _map);
+            _routeMapReference = DotNetObjectReference.Create(this);
+            await _routeMapModule.InvokeVoidAsync("initialize", _map, _routeMapReference);
         }
     }
+
+    [JSInvokable]
+    public void WaypointAdded(decimal latitude, decimal longitude) => Console.WriteLine($"Added Waypoint - Latitude: {latitude}, " +
+                                                                                        $"Longitude: {longitude}");
 
     async ValueTask IAsyncDisposable.DisposeAsync()
     {
@@ -38,6 +44,7 @@
         {
             await _routeMapModule.DisposeAsync();
         }
+        _routeMapReference?.Dispose();
     }
 
     public async Task DeleteLastWaypoint()
