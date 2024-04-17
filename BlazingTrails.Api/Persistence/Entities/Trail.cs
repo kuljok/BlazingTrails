@@ -10,5 +10,5 @@ public class Trail
     public int TimeInMinutes { get; set; }
     public int Length { get; set; }
 
-    public ICollection<RouteInstruction> Route { get; set; } = default!;
+    public ICollection<Waypoint> Waypoints { get; set; } = new List<Waypoint>();
 }
