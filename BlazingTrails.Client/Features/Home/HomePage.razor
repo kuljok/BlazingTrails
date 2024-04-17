@@ -87,7 +87,8 @@ else
                 Description = x.Description,
                 Location = x.Location,
                 Length = x.Length,
-                TimeInMinutes = x.TimeInMinutes
+                TimeInMinutes = x.TimeInMinutes,
+                Waypoints = x.Waupoints.Select(wp => new LatLong(wp.Latitude, wp.Longitude)).ToList()
             });
         }
         catch (HttpRequestException ex)

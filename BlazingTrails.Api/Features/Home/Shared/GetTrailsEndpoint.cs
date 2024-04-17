@@ -21,12 +21,13 @@ public class GetTrailsEndpoint: EndpointBaseAsync.WithRequest<int>
     public override async Task<ActionResult<GetTrailsRequest.Response>> HandleAsync(int request, 
         CancellationToken cancellationToken = default)
     {
-        var trails = await _context.Trails
+        var trails = await _context.Trails.Include(t => t.Waypoints)
             .ToListAsync(cancellationToken);
 
         var response = new GetTrailsRequest.Response(trails.Select(trail =>
             new GetTrailsRequest.Trail(trail.Id, trail.Name, trail.Image, trail.Location,
-                trail.TimeInMinutes, trail.Length, trail.Description)));
+                trail.TimeInMinutes, trail.Length, trail.Description,
+        trail.Waypoints.Select(wp => new GetTrailsRequest.Waypoint(wp.Latitude, wp.Longitude)).ToList())));
 
         return Ok(response);
     }

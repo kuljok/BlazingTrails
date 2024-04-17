@@ -13,7 +13,10 @@ public class GetTrailsRequest: IRequest<GetTrailsRequest.Response>
         string Location,
         int TimeInMinutes,
         int Length,
-        string Description);
+        string Description,
+        List<Waypoint> Waupoints);
 
     public record Response(IEnumerable<Trail> Trails);
+
+    public record Waypoint(decimal Latitude, decimal Longitude);
 }
