@@ -2,6 +2,7 @@ using System.Reflection;
 using BlazingTrails.Api.Persistence;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 
@@ -16,6 +17,16 @@ builder.Services
     .AddFluentValidationAutoValidation()
     .AddValidatorsFromAssembly(Assembly.Load("BlazingTrails.Shared"))
     .AddFluentValidationClientsideAdapters();
+
+builder.Services.AddAuthentication(o =>
+{
+    o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    o.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(o =>
+{
+    o.Authority = builder.Configuration["Auth0:Authority"];
+    o.Audience = builder.Configuration["Auth0:ApiIdentifier"];
+});
 
 var app = builder.Build();
 
@@ -41,6 +52,9 @@ app.UseStaticFiles(new StaticFileOptions()
 });
 
 app.UseRouting();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 // if a request doesn't match a controller, 
