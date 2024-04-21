@@ -12,5 +12,6 @@ public class TrailConfig: IEntityTypeConfiguration<Trail>
         builder.Property(x => x.Location).IsRequired();
         builder.Property(x => x.TimeInMinutes).IsRequired();
         builder.Property(x => x.Length).IsRequired();
+        builder.Property(x => x.Owner).IsRequired();
     }
 }

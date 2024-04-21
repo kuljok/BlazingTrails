@@ -1,7 +1,6 @@
 using Ardalis.ApiEndpoints;
 using BlazingTrails.Api.Persistence;
 using BlazingTrails.Shared.Features.Home.Shared;
-using BlazingTrails.Shared.Features.ManageTrails.EditTrail;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,7 +25,7 @@ public class GetTrailsEndpoint: EndpointBaseAsync.WithRequest<int>
 
         var response = new GetTrailsRequest.Response(trails.Select(trail =>
             new GetTrailsRequest.Trail(trail.Id, trail.Name, trail.Image, trail.Location,
-                trail.TimeInMinutes, trail.Length, trail.Description,
+                trail.TimeInMinutes, trail.Length, trail.Description, trail.Owner,
         trail.Waypoints.Select(wp => new GetTrailsRequest.Waypoint(wp.Latitude, wp.Longitude)).ToList())));
 
         return Ok(response);

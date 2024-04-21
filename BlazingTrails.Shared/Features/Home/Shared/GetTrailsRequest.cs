@@ -14,6 +14,7 @@ public class GetTrailsRequest: IRequest<GetTrailsRequest.Response>
         int TimeInMinutes,
         int Length,
         string Description,
+        string Owner,
         List<Waypoint> Waupoints);
 
     public record Response(IEnumerable<Trail> Trails);
