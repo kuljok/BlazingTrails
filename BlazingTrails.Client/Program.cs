@@ -22,4 +22,6 @@ builder.Services.AddOidcAuthentication(o =>
     o.ProviderOptions.ResponseType = "code";
 });
 
+builder.Services.AddScoped<AppState>();
+
 await builder.Build().RunAsync();
